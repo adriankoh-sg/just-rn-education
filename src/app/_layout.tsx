@@ -3,9 +3,11 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
+import NetworkLoggerModal from '@/src/components/networkLogger/NetworkLoggerModal';
+import NetworkLoggerUI from '../components/networkLogger/NetworkLoggerUI';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -46,12 +48,19 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  const [isLoggerVisible, setLoggerVisible] = useState(false);
+
+  const toggleLogger = () => {
+    setLoggerVisible((prev) => !prev);
+  };
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(screens)" options={{ headerShown: false }} />
       </Stack>
+      <NetworkLoggerUI onPress={toggleLogger} />
+      <NetworkLoggerModal visible={isLoggerVisible} onClose={toggleLogger} />
     </ThemeProvider>
   );
 }
