@@ -1,5 +1,5 @@
 import { Link } from 'expo-router';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { Text, TouchableHighlight, View } from 'react-native';
 
 const LoginScreen = () => {
   return (

@@ -1,4 +1,5 @@
 import { View } from 'react-native';
+
 import LoginScreen from './(screens)/login';
 
 const App = () => {
