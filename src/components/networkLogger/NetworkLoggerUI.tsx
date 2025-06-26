@@ -3,7 +3,16 @@ import { Feather } from '@expo/vector-icons';
 
 const NetworkLoggerUI = ({ onPress }: { onPress: () => void }) => {
   return (
-    <View style={{ position: 'absolute', bottom: 120, left: 16, backgroundColor: 'red' }}>
+    <View
+      style={{
+        position: 'absolute',
+        bottom: 120,
+        left: 16,
+        backgroundColor: 'red',
+        opacity: 0.6,
+        borderRadius: 10,
+      }}
+    >
       <Pressable
         testID="network-logger-button"
         onPress={onPress}
