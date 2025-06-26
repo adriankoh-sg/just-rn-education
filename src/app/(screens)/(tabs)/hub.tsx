@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native";
+import { ScrollView, View } from 'react-native';
 
 const Hub = () => {
   return (
@@ -9,6 +9,6 @@ const Hub = () => {
       <View style={{ flex: 1, backgroundColor: 'green', margin: 16, height: 200 }}></View>
     </ScrollView>
   );
-}
+};
 
 export default Hub;

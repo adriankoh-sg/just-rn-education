@@ -1,5 +1,5 @@
-import { View, Text } from "react-native";
-import LoginScreen from "./(screens)/login";
+import { View } from 'react-native';
+import LoginScreen from './(screens)/login';
 
 const App = () => {
   return (
@@ -7,6 +7,6 @@ const App = () => {
       <LoginScreen />
     </View>
   );
-}
+};
 
 export default App;

@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text } from 'react-native';
 
 const HomeScreen = () => {
   return (
@@ -6,6 +6,6 @@ const HomeScreen = () => {
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Home Screen</Text>
     </View>
   );
-}
+};
 
 export default HomeScreen;

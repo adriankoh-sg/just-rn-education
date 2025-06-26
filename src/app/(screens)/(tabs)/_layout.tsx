@@ -1,22 +1,21 @@
-import React from "react";
-import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
-import { Link, router, Tabs } from "expo-router";
-import { Linking, Pressable } from "react-native";
+import React from 'react';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
+import { router, Tabs } from 'expo-router';
+import { Linking, Pressable, useColorScheme } from 'react-native';
 
-import Colors from "@constants/Colors";
-import { useColorScheme } from "react-native";
-import { CONTACTS, NAVIGATION } from "@constants/appConfig";
+import Colors from '@constants/Colors';
+import { CONTACTS, NAVIGATION } from '@constants/appConfig';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof MaterialIcons>["name"];
+  name: React.ComponentProps<typeof MaterialIcons>['name'];
   color: string;
 }) {
   return <MaterialIcons size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
 const CreateTabBarButton = (url: string) => {
-  return (props: any) => (
+  const TabBarButtonComponent = (props: any) => (
     <Pressable
       {...props}
       onPress={() => {
@@ -24,15 +23,16 @@ const CreateTabBarButton = (url: string) => {
       }}
     />
   );
+  TabBarButtonComponent.displayName = `TabBarButton(${url})`;
+  return TabBarButtonComponent;
 };
 
 const WalletButton = () => {
-  return (props: any) => (
-    <Pressable
-      {...props}
-      onPress={() => router.navigate("/wallet")}
-    ></Pressable>
+  const WalletTabBarButton = (props: any) => (
+    <Pressable {...props} onPress={() => router.navigate('/wallet')}></Pressable>
   );
+  WalletTabBarButton.displayName = 'WalletTabBarButton';
+  return WalletTabBarButton;
 };
 
 export default function TabLayout() {
@@ -41,7 +41,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
       }}
     >
@@ -56,7 +56,7 @@ export default function TabLayout() {
                 <FontAwesome
                   name="info-circle"
                   size={25}
-                  color={Colors[colorScheme ?? "light"].text}
+                  color={Colors[colorScheme ?? 'light'].text}
                   style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                 />
               )}
