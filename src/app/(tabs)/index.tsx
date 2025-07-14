@@ -1,7 +1,9 @@
+import useAuthStore from '@/src/store/authStore';
 import { Link } from 'expo-router';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableHighlight, Button } from 'react-native';
 
 const Dashboard = () => {
+  const { logout } = useAuthStore();
   console.log('Dashboard component rendered');
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -18,11 +20,12 @@ const Dashboard = () => {
         selections.
       </Text>
       <View style={{ paddingTop: 20, flexDirection: 'column', gap: 10 }}>
-        <Link href="/home" asChild>
+        <Link href="/screens/home/HomeScreen" asChild>
           <TouchableHighlight style={{ padding: 10, backgroundColor: '#007BFF', borderRadius: 5 }}>
             <Text>Go to Home Screen</Text>
           </TouchableHighlight>
         </Link>
+        <Button title="Logout" onPress={() => logout()} />
       </View>
     </View>
   );

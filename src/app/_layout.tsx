@@ -8,6 +8,7 @@ import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
 import NetworkLoggerModal from '@/src/components/networkLogger/NetworkLoggerModal';
 import NetworkLoggerUI from '../components/networkLogger/NetworkLoggerUI';
+import useAuthStore from '@store/authStore';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -49,15 +50,22 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
   const [isLoggerVisible, setLoggerVisible] = useState(false);
+  const { user, isLogin, login, logout } = useAuthStore();
 
   const toggleLogger = () => {
     setLoggerVisible((prev) => !prev);
   };
 
+  console.log({ isLogin, user });
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(screens)" options={{ headerShown: false }} />
+        <Stack.Protected guard={isLogin}>
+          <Stack.Screen
+            name="(tabs)"
+            options={{ headerShown: false }}
+          />
+        </Stack.Protected>
       </Stack>
       <NetworkLoggerUI onPress={toggleLogger} />
       <NetworkLoggerModal visible={isLoggerVisible} onClose={toggleLogger} />
