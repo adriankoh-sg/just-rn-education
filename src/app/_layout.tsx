@@ -1,18 +1,18 @@
+import NetworkLoggerModal from '@/src/components/networkLogger/NetworkLoggerModal';
+import NetworkLoggerUI from '@/src/components/networkLogger/NetworkLoggerUI';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import useAuthStore from '@store/authStore';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import 'react-native-reanimated';
-import NetworkLoggerModal from '@/src/components/networkLogger/NetworkLoggerModal';
-import NetworkLoggerUI from '../components/networkLogger/NetworkLoggerUI';
-import useAuthStore from '@store/authStore';
 
 export {
   // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
+  ErrorBoundary
 } from 'expo-router';
 
 export const unstable_settings = {

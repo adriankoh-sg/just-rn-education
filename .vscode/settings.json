@@ -4,6 +4,7 @@
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always",
+    "source.sortImports": "always",
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
